@@ -1,4 +1,4 @@
 rubyonrails_bootcamp
 ====================
 
-Code for Ruby on Rails Bootcamp
+The code in this file is for the Ruby on Rails Bootcamp
