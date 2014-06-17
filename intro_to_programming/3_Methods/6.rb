@@ -1,0 +1,1 @@
+puts "It tells us that you entered the wrong number of arguments. The user entered one argument, when there should be two. The arguments must match what was in the method definition"
