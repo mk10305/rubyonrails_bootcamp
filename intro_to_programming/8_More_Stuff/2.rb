@@ -1,0 +1,1 @@
+puts "Nothing is printed to the screen and the Proc object is returned. You have to use the block.call method"
