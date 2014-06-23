@@ -1,0 +1,1 @@
+puts "These hashes are the same because both ways of writing hashes are valid and it makes them the same"
