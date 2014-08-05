@@ -1,1 +1,1 @@
-"This error might have occured when a hash was being created and the user accidently put a closing parenthesis instead of the } symbol"
+puts "This error might have occured when a hash was being created and the user accidently put a closing parenthesis instead of the } symbol"
