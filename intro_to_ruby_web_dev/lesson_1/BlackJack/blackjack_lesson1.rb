@@ -1,10 +1,20 @@
 #initialize variables
 player_cards = []
 dealer_cards = []
-play_again = "Y"
+
 suits = ['Hearts', 'Diamonds', 'Spades', 'Clubs']
 cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
 deck = suits.product(cards)
+
+#Start the game
+begin
+puts "Welcome! Let's play some BlackJack"
+puts "Before we start, what is your name?"
+player_name = gets.chomp
+
+puts "Thanks #{player_name}, I will now deal you and the Dealer two cards"
+puts "Dealing cards........"
+
 
 #shuffle cards method
 def shuffle_cards (deck_of_cards)
@@ -42,14 +52,6 @@ play_again = gets.chomp.upcase
 end
 
 
-#Start the game
-while play_again == "Y"
-puts "Welcome! Let's play some BlackJack"
-puts "Before we start, what is your name?"
-player_name = gets.chomp
-
-puts "Thanks #{player_name}, I will now deal you and the Dealer two cards"
-puts "Dealing cards........"
 
 #shuffle cards
 shuffle_cards(deck)
@@ -67,9 +69,10 @@ dealer_total = calculate_total(dealer_cards)
 
 
 #display what cards player and dealer have
-puts "You, #{player_name}, have the following cards:   #{player_cards[0][1]} of #{player_cards[0][0]} and a #{player_cards[1][1]} of #{player_cards[1][0]}"
+puts "You, #{player_name}, have the following cards:#{player_cards[0][1]} of #{player_cards[0][0]} and a #{player_cards[1][1]} of #{player_cards[1][0]}"
 puts "And Your cards sum up to be #{player_total}"
-puts "The Dealer has the following cards:   #{dealer_cards[0][1]} of #{dealer_cards[0][0]} and the other card is face down"
+puts ""
+puts "The Dealer's cards: #{dealer_cards[0][1]} of #{dealer_cards[0][0]} and the other card is face down"
 
 
 #player conditionals
@@ -174,9 +177,11 @@ else
   play_again()
   exit
 end
-end
 
-puts "Bye"
+end while play_again == "Y"
+
+puts "Ok! Thanks for playing! Bye!"
+
 
 
 
