@@ -1,4 +1,5 @@
-#initialize variables
+
+def start
 player_cards = []
 dealer_cards = []
 
@@ -7,7 +8,6 @@ cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 
 deck = suits.product(cards)
 
 #Start the game
-begin
 puts "Welcome! Let's play some BlackJack"
 puts "Before we start, what is your name?"
 player_name = gets.chomp
@@ -46,12 +46,6 @@ def calculate_total(cards)
 total
 end
 
-def play_again
-puts "Do you want to play again? (Y/N)"
-play_again = gets.chomp.upcase
-end
-
-
 
 #shuffle cards
 shuffle_cards(deck)
@@ -78,8 +72,7 @@ puts "The Dealer's cards: #{dealer_cards[0][1]} of #{dealer_cards[0][0]} and the
 #player conditionals
 if player_total == 21
   puts "Yay! #{player_name}, you hit blackjack. You win"
-  play_again()
-  exit
+  play_again
   # Note: Don't need > 21 scenario, because the max value two cards can have is 21
 end
 
@@ -110,12 +103,10 @@ while player_total < 21
 
   if player_total == 21
     puts "Congratulations, you hit blackjack! You win"
-    play_again()
-    exit
+    play_again
   elsif player_total > 21
     puts "Sorry, looks like you busted. You lose"
-    play_again()
-    exit
+    play_again
   end
 end
 
@@ -125,8 +116,7 @@ end
 #dealer conditionals
 if dealer_total == 21
   puts "Dealer hit BlackJack. Sorry you lose"
-  play_again()
-  exit
+  play_again
 end
 
 #dealer keeps hitting until it gets a value of at least 17
@@ -141,12 +131,10 @@ while dealer_total < 17
   #During this process of hitting, need to check if the dealer gets 21 or gets over 21. 
   if dealer_total == 21
     puts "Sorry, the Dealer hit Black. You lose"
-    play_again()
-    exit
+    play_again
   elsif dealer_total > 21
     puts "Congratulations, the Dealer busted! You win"
-    play_again()
-    exit
+    play_again
   end
 end
 
@@ -166,26 +154,29 @@ end
 #the dealer either has 17,18,19 or 20. And the player at this point decided to stay. So compare the total values of each to see who won.
 if dealer_total > player_total
   puts "Sorry, Dealer won"
-  play_again()
-  exit
+  play_again
 elsif dealer_total < player_total
   puts "Yay, #{player_name}, you win!"
-  play_again()
-  exit
+  play_again
 else 
   puts "It is a tie"
-  play_again()
-  exit
+  play_again
+end
 end
 
-end while play_again == "Y"
+def play_again
+  puts ""
+  puts "Would you like to play again? Enter 1 for Yes or Enter 2 for No"
+  if gets.chomp == "1"
+    puts "Starting a new game"
+    start
+  else
+    puts "Goodbye!"
+    exit
+  end
+end
 
-puts "Ok! Thanks for playing! Bye!"
-
-
-
-
-
+start()
 
 
 
