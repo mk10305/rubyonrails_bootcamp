@@ -26,7 +26,7 @@ puts "The computer selected #{computer_selection}"
 
 if selection == computer_selection
   puts "It is a tie"
-elsif selection == ("paper" && computer_selection == 'rock') || selection == ("rock" && computer_selection == 'scissors') || selection == ("scissors" && computer_selection == 'paper')
+elsif (selection == "paper" && computer_selection == 'rock') || (selection == "rock" && computer_selection == 'scissors') || (selection == "scissors" && computer_selection == 'paper')
   puts "You win!"
 else
   puts "You lose"
