@@ -4,11 +4,15 @@ class Game
    attr_accessor:user_selection, :computer_selection
 
 def initialize
+  choices = ['rock', 'paper', 'scissors'] 
   puts "Hi! Let's play Paper, Rock, and Scissors!"
+
+  begin
   puts "Enter your selection: rock, paper, or scissors."
   @user_selection = gets.chomp
-  computer_choices = ['rock', 'paper', 'scissors'] 
-  @computer_selection = computer_choices.shuffle[0]
+  end until choices.include?(@user_selection)
+
+  @computer_selection = choices.shuffle[0]
 end
 
 
@@ -29,16 +33,20 @@ end
 
 
 def play_again
-  puts "Do you want to play again? (Y/N)"
-  play_again = gets.chomp.upcase
-  if play_again == "Y"
+  puts "Enter Y if you want to play again or N if you do not want to play again"
+  play_again_answer = gets.chomp.upcase
+  if play_again_answer == "Y"
     game = Game.new
     game.selection_msg
     game.score_calculation
     game.play_again
+  elsif play_again_answer =="N"
+    puts "Thanks for Playing! Bye!"
   else
-    puts "Okay, Thanks for Playing!"
+    puts "Please Enter Y or N"
   end
+
+ 
 end
 
 end
