@@ -6,6 +6,14 @@ class Game
 def initialize
   puts "Hi! Let's play Paper, Rock, and Scissors!"
   puts "Enter your selection: rock, paper, or scissors."
+  @user_selection = gets.chomp
+  computer_choices = ['rock', 'paper', 'scissors'] 
+  @computer_selection = computer_choices.shuffle[0]
+end
+
+
+def selection_msg
+     puts "You chose #{user_selection} and the computer chose #{computer_selection}" 
 end
 
 
@@ -25,8 +33,7 @@ def play_again
   play_again = gets.chomp.upcase
   if play_again == "Y"
     game = Game.new
-    user = Player.new.user_msg
-    computer = Computer.new.computer_msg
+    game.selection_msg
     game.score_calculation
     game.play_again
   else
@@ -37,39 +44,10 @@ end
 end
 
 
-class Player < Game
-
-  def initialize
-    @user_selection = gets.chomp
-  end
-
-  def user_msg
-   puts "You chose #{user_selection}"
-  end
-  
-end
-
-class Computer < Game
-
-  def initialize
-    computer_choices = ['rock', 'paper', 'scissors'] 
-    @computer_selection = computer_choices.shuffle[0]
-  end
-
-  def computer_msg
-    puts "The Computer chose #{computer_selection}"
-  end
-
-end
-
-
 
 game = Game.new
-user = Player.new.user_msg
-computer = Computer.new.computer_msg
+game.selection_msg
 game.score_calculation
 game.play_again
-
-
 
 
