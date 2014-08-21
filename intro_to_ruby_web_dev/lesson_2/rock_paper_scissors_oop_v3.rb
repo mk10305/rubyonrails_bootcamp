@@ -1,5 +1,6 @@
 
 class Player
+  attr_accessor:name
   def initialize(n)
     @name = n
   end
@@ -7,9 +8,9 @@ end
 
 
 
-class Game
+class Game < Player
    include Comparable
-   attr_accessor:user_selection, :computer_selection, :player, :computer, :value
+   attr_accessor:user_selection, :computer_selection, :player, :computer
 
    def initialize
      choices = ['rock', 'paper', 'scissors'] 
@@ -24,14 +25,11 @@ class Game
 
      @player = Player.new("Bob")
      @computer = Player.new("R2D2")
-
-
-
    end
 
 
 def selection_msg
-     puts "You chose #{user_selection} and the computer chose #{computer_selection}" 
+     puts "You chose and the computer chose #{computer_selection}" 
 end
 
 
@@ -81,8 +79,6 @@ end
 
 
 game = Game.new
-player = Player.new("Madeeha")
-computer = Player.new("Computer")
 game.selection_msg
 game.compare_hands
 game.play_again
