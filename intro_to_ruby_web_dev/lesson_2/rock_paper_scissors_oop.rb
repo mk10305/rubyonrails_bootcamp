@@ -33,24 +33,26 @@ end
 
 
 def play_again
+
+begin
   puts "Enter Y if you want to play again or N if you do not want to play again"
   play_again_answer = gets.chomp.upcase
+  play_again_choices = ['Y', 'N']
+
   if play_again_answer == "Y"
     game = Game.new
     game.selection_msg
     game.score_calculation
     game.play_again
-  elsif play_again_answer =="N"
+  elsif play_again_answer == "N"
     puts "Thanks for Playing! Bye!"
-  else
-    puts "Please Enter Y or N"
   end
+end until play_again_choices.include?(play_again_answer)
 
- 
+
 end
 
 end
-
 
 
 game = Game.new
