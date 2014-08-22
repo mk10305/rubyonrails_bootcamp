@@ -8,7 +8,7 @@ end
 
 
 
-class Game < Player
+class Game 
    include Comparable
    attr_accessor:user_selection, :computer_selection, :player, :computer
 
