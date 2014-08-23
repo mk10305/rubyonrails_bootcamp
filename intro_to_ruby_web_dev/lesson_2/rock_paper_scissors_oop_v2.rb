@@ -1,4 +1,3 @@
-
 class Hand
   include Comparable
   attr_reader :value
