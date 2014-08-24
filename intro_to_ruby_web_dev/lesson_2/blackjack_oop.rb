@@ -17,19 +17,19 @@ class Player
     #loop through these card values. If the value is an Ace, give it 11, if it is J, Q, or K, give it a value of 10. Otherwise just use the face value
     card_values.each do |card|
       if card == 'Ace'
-        @total += 11
+        total += 11
       elsif card.to_i == 0 
-        @total = @total + 10
+        total = total + 10
       else
-        @total += card.to_i
+        total += card.to_i
       end
     end
 
     #count all the Aces we have using the select and count methods. And then go through the loop the number of times Ace is in the array and subtract 10 each time the total value is over 21.
 
     card_values.select {|e| e == "A"}.count.times do
-      if @total > 21
-        @total -= 10
+      if total > 21
+        total -= 10
       end
     end
     total
@@ -134,11 +134,11 @@ end
 
       #dealer keeps hitting until it gets a value of at least 17
       while @dealer.total < 17
-        shuffle_cards
+        @game_cards.shuffle_cards
         new_dealer_card = @game_cards.deck.pop
         puts "The Dealer is choosing to get a new card"
         @dealer.cards << new_dealer_card
-        @dealer_total = calculate_total
+        @dealer.total = @dealer.calculate_total
         puts "The new card you were dealt with is #{@dealer.cards.last[1]} of #{@dealer_cards.last[0]}"
         puts "The Dealer's cards sum up to be #{@dealer.total}"
 
