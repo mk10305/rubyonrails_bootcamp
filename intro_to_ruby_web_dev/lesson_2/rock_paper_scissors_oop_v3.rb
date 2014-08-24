@@ -1,4 +1,7 @@
 
+
+#two questions
+
 class Player
   include Comparable
   attr_accessor :name, :choice
