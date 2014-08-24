@@ -74,7 +74,7 @@ end
       #deal initial cards
       #@player is an object @dealer is an object. They both have empty cards array
       @player.cards << @game_cards.deck.pop
-      dealer.cards << @game_cards.deck.pop
+      @dealer.cards << @game_cards.deck.pop
       @player.cards << @game_cards.deck.pop
       @dealer.cards << @game_cards.deck.pop
 
