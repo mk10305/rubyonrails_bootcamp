@@ -139,7 +139,7 @@ end
         puts "The Dealer is choosing to get a new card"
         @dealer.cards << new_dealer_card
         @dealer.total = @dealer.calculate_total
-        puts "The new card you were dealt with is #{@dealer.cards.last[1]} of #{@dealer_cards.last[0]}"
+        puts "The new card you were dealt with is #{@dealer.cards.last[1]} of #{@dealer.cards.last[0]}"
         puts "The Dealer's cards sum up to be #{@dealer.total}"
 
         #during this process of hitting, need to check if the dealer gets 21 or gets over 21
