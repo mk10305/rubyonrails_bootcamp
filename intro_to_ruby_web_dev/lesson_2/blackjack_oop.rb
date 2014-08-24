@@ -32,7 +32,7 @@ class Player
         total -= 10
       end
     end
-    total
+    @total = total
   end
 
 end
