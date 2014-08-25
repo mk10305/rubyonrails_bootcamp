@@ -70,7 +70,7 @@ puts "The Dealer's cards: #{dealer_cards[0][1]} of #{dealer_cards[0][0]} and the
 
 if player_total == 21
   puts "Yay! #{player_name}, you hit blackjack. You win"
-  play_again
+  #play_again
   #Note: Don't need > 21 scenario, because the max value two cards can have is 21
 end
 
@@ -87,7 +87,6 @@ while player_total <21
     puts "You chose to Stay"
     break #break means exit the loop and compare with dealer's cards
   end
-
 
   #If the user decides to Hit
   shuffle_cards(deck)

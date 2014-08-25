@@ -79,6 +79,16 @@ end
       @game_cards = Deck.new
     end
 
+    def hit(player)
+      @game_cards.shuffle_cards
+      new_card = @game_cards.deck.pop
+      puts "The Dealer is choosing to get a new card...."
+      player.cards << player_card
+      player.total = player.calculate_total
+      puts "The new card #{player.name} was dealt with is #{player.cards.last[1]} of #{player.cards.last[0]}"
+      puts "The #{player.name} cards sum up to be #{player.total}"
+    end
+
     def run
       puts "Thanks #{@player.name}, I will now deal you and the Dealer two cards"
       puts "Dealing Cards......"
@@ -179,9 +189,20 @@ end
       end
 
       @player <=> @dealer
-
-   
     end
+
+    def play_again
+      puts ""
+      puts "Would you like to play again? Enter 1 for Yes or Enter 2 for No"
+      if gets.chomp == "1"
+        puts "Starting a new game"
+        self.run
+      else
+        puts "Goodbye!"
+        exit
+      end
+    end
+
 
 
 
@@ -191,7 +212,7 @@ end
 
 
 game = Game.new.run
-#game.play_again
+game.play_again
 
 
 
