@@ -35,6 +35,21 @@ class Player
     @total = total
   end
 
+
+  def <=>(player)
+    if @total == player.total
+      0
+    elsif (@total < player.total)
+      -1
+    elsif (@total > player.total)
+      1
+    end
+  end
+
+
+
+
+
 end
 
 
@@ -165,10 +180,10 @@ end
       end
 
       #the dealer either has 17,18,19, or 20. And the player at this point has decided to Stay. So compare the total values of each to see who won.
-      if @dealer.total > @player.total
+      if @dealer > @player
         puts "Sorry, Dealer won!"
         #play_again
-      elsif @dealer.total < @player.total
+      elsif @dealer < @player 
         puts "Yay, #{player.name}, you win!"
         #play_again
       else
