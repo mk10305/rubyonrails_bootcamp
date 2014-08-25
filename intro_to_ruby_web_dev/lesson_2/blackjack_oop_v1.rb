@@ -45,11 +45,6 @@ class Player
       puts "Player wins"
     end
   end
-
-
-
-
-
 end
 
 
@@ -79,14 +74,22 @@ end
       @game_cards = Deck.new
     end
 
-    def hit(player)
+    def hit(player, msg, name)
       @game_cards.shuffle_cards
       new_card = @game_cards.deck.pop
-      puts "The Dealer is choosing to get a new card...."
-      player.cards << player_card
-      player.total = player.calculate_total
+      puts msg
+      player.cards << new_card
+      player.calculate_total
       puts "The new card #{player.name} was dealt with is #{player.cards.last[1]} of #{player.cards.last[0]}"
       puts "The #{player.name} cards sum up to be #{player.total}"
+
+      if player.total == 21
+        puts "Congratulations, #{name} hit BlackJack! #{name} win!"
+        play_again
+      elsif player.total > 21
+        puts "Sorry, looks like #{name} busted. #{name} lose"
+        play_again
+      end
     end
 
     def run
@@ -113,7 +116,7 @@ end
   
       #player conditionals
       if @player.total == 21
-        puts "Yay! #{player_name}, you hit blackjack"
+        puts "Yay! #{@player.name}, you hit blackjack"
         #Note: Don't need > 21 scenario, because the max value two cards can have is 21
       end
 
@@ -132,47 +135,17 @@ end
         end
         
         #If the user decides to Hit
-        @game_cards.shuffle_cards
-        new_player_card = @game_cards.deck.pop
-        puts "#{@player.name}, you chose hit, dealing new card...."
-        @player.cards << new_player_card
-        @player.calculate_total
-        puts "The new card you were dealt with is #{@player.cards.last[1]} of #{@player.cards.last[0]}"
-        puts "Your cards sum up to be #{@player.total}"
-
-        if @player.total == 21
-          puts "Congratulations, you hit BlackJack! You win!"
-          exit
-        elsif @player.total > 21
-          puts "Sorry, looks like you busted. You lose"
-          exit
-        end
+        hit(@player, "#{player.name}, you chose hit, dealing new card...", "You")
       end #end while loop
 
       #dealer_conditionals
       if @dealer.total == 21
         puts "Dealer hit BlackJack."
-        #play_again
       end
 
       #dealer keeps hitting until it gets a value of at least 17
       while @dealer.total < 17
-        @game_cards.shuffle_cards
-        new_dealer_card = @game_cards.deck.pop
-        puts "The Dealer is choosing to get a new card...."
-        @dealer.cards << new_dealer_card
-        @dealer.total = @dealer.calculate_total
-        puts "The new card #{@dealer.name} were dealt with is #{@dealer.cards.last[1]} of #{@dealer.cards.last[0]}"
-        puts "The Dealer's cards sum up to be #{@dealer.total}"
-
-        #during this process of hitting, need to check if the dealer gets 21 or gets over 21
-        if @dealer.total == 21
-          puts "Sorry, the Dealer hit BlackJack. You lose"
-          exit
-        elsif @dealer.total > 21
-          puts "Congratulations, the Dealer busted! You win"
-          exit
-        end
+        hit(@dealer, "The Dealer is choosing to get a new card....", "Dealer")
       end #end while loop
 
 
@@ -189,30 +162,31 @@ end
       end
 
       @player <=> @dealer
+      play_again
     end
 
     def play_again
+      begin
       puts ""
       puts "Would you like to play again? Enter 1 for Yes or Enter 2 for No"
-      if gets.chomp == "1"
+      player_answer = gets.chomp
+      play_again_choices = ['Y', 'N']
+      if player_answer == "1"
         puts "Starting a new game"
-        self.run
-      else
+        game = Game.new.run
+      elsif player_answer =="2"
         puts "Goodbye!"
         exit
       end
+      end until play_again_choices.include?(player_answer)
+      
     end
-
-
-
-
-
   end
 
 
 
 game = Game.new.run
-game.play_again
+
 
 
 
