@@ -38,11 +38,11 @@ class Player
 
   def <=>(player)
     if @total == player.total
-      0
+      puts "It is a tie"
     elsif (@total < player.total)
-      -1
+      puts "Dealer loses"
     elsif (@total > player.total)
-      1
+      puts "Player wins"
     end
   end
 
@@ -104,11 +104,10 @@ end
       #player conditionals
       if @player.total == 21
         puts "Yay! #{player_name}, you hit blackjack. You win"
-        play_again
         #Note: Don't need > 21 scenario, because the max value two cards can have is 21
       end
 
-      while @player.total < 21 
+        while @player.total < 21 
         puts "Enter 1 if you want to Hit or Enter 2 if you want to Stay"
         hit_or_stay = gets.chomp
 
@@ -133,12 +132,12 @@ end
 
         if @player.total == 21
           puts "Congratulations, you hit BlackJack! You win!"
-          #play_again
+          exit
         elsif @player.total > 21
           puts "Sorry, looks like you busted. You lose"
-          #play_again
+          exit
         end
-      end
+      end #end while loop
 
       #dealer_conditionals
       if @dealer.total == 21
@@ -153,7 +152,7 @@ end
         puts "The Dealer is choosing to get a new card"
         @dealer.cards << new_dealer_card
         @dealer.total = @dealer.calculate_total
-        puts "The new card you were dealt with is #{@dealer.cards.last[1]} of #{@dealer.cards.last[0]}"
+        puts "The new card #{@dealer.name} were dealt with is #{@dealer.cards.last[1]} of #{@dealer.cards.last[0]}"
         puts "The Dealer's cards sum up to be #{@dealer.total}"
 
         #during this process of hitting, need to check if the dealer gets 21 or gets over 21
@@ -164,7 +163,7 @@ end
           puts "Congratulations, the Dealer busted! You win"
           #play_again
         end
-      end
+      end #end while loop
 
 
       #show dealer cards
@@ -179,17 +178,9 @@ end
         puts "==> #{card}"
       end
 
-      #the dealer either has 17,18,19, or 20. And the player at this point has decided to Stay. So compare the total values of each to see who won.
-      if @dealer > @player
-        puts "Sorry, Dealer won!"
-        #play_again
-      elsif @dealer < @player 
-        puts "Yay, #{player.name}, you win!"
-        #play_again
-      else
-        puts "It is a tie"
-        #play_again
-      end
+      @player <=> @dealer
+
+   
     end
 
 
