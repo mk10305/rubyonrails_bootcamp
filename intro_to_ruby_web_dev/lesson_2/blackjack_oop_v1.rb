@@ -103,7 +103,7 @@ end
   
       #player conditionals
       if @player.total == 21
-        puts "Yay! #{player_name}, you hit blackjack. You win"
+        puts "Yay! #{player_name}, you hit blackjack"
         #Note: Don't need > 21 scenario, because the max value two cards can have is 21
       end
 
@@ -141,7 +141,7 @@ end
 
       #dealer_conditionals
       if @dealer.total == 21
-        puts "Dealer hit BlackJack. Sorry you lose"
+        puts "Dealer hit BlackJack."
         #play_again
       end
 
@@ -149,7 +149,7 @@ end
       while @dealer.total < 17
         @game_cards.shuffle_cards
         new_dealer_card = @game_cards.deck.pop
-        puts "The Dealer is choosing to get a new card"
+        puts "The Dealer is choosing to get a new card...."
         @dealer.cards << new_dealer_card
         @dealer.total = @dealer.calculate_total
         puts "The new card #{@dealer.name} were dealt with is #{@dealer.cards.last[1]} of #{@dealer.cards.last[0]}"
@@ -158,10 +158,10 @@ end
         #during this process of hitting, need to check if the dealer gets 21 or gets over 21
         if @dealer.total == 21
           puts "Sorry, the Dealer hit BlackJack. You lose"
-          #play_again
+          exit
         elsif @dealer.total > 21
           puts "Congratulations, the Dealer busted! You win"
-          #play_again
+          exit
         end
       end #end while loop
 
