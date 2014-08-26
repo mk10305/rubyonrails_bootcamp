@@ -11,7 +11,7 @@ class Player
   #value of cards method
   def calculate_total
     #create a new array card_values to just contain the values of the cards
-    card_values = @cards.map {|value| value[1]}
+    card_values = cards.map {|value| value[1]}
     total = 0
 
     #loop through these card values. If the value is an Ace, give it 11, if it is J, Q, or K, give it a value of 10. Otherwise just use the face value
@@ -37,11 +37,11 @@ class Player
 
 
   def <=>(player)
-    if @total == player.total
+    if total == player.total
       puts "It is a tie"
-    elsif (@total < player.total)
+    elsif (total < player.total)
       puts "Dealer loses"
-    elsif (@total > player.total)
+    elsif (total > player.total)
       puts "Player wins"
     end
   end
@@ -53,11 +53,11 @@ end
     def initialize
       @suits = ['Hearts', 'Diamonds', 'Spades', 'Clubs']
       @cards = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
-      @deck = suits.product(@cards)
+      @deck = suits.product(cards)
     end
 
     def shuffle_cards
-      @deck.shuffle!
+      deck.shuffle!
     end
 
   end
@@ -75,38 +75,38 @@ end
     end
 
     def hit(player, msg, name)
-      @game_cards.shuffle_cards
-      new_card = @game_cards.deck.pop
+      game_cards.shuffle_cards
+      new_card = game_cards.deck.pop
       puts msg
       player.cards << new_card
       player.calculate_total
       puts "The new card #{player.name} was dealt with is #{player.cards.last[1]} of #{player.cards.last[0]}"
-      puts "The #{player.name} cards sum up to be #{player.total}"
+      puts "#{player.name}'s cards sum up to be #{player.total}"
 
       if player.total == 21
-        puts "Congratulations, #{name} hit BlackJack! #{name} win!"
+        puts "#{name} hit BlackJack! #{name} win!"
         play_again
       elsif player.total > 21
-        puts "Sorry, looks like #{name} busted. #{name} lose"
+        puts "Sorry, looks like #{name} busted. #{name} loses"
         play_again
       end
     end
 
     def run
-      puts "Thanks #{@player.name}, I will now deal you and the Dealer two cards"
+      puts "Thanks #{player.name}, I will now deal you and the Dealer two cards"
       puts "Dealing Cards......"
 
-      @game_cards.shuffle_cards
+      game_cards.shuffle_cards
 
       #deal initial cards
       #@player is an object @dealer is an object. They both have empty cards array
-      @player.cards << @game_cards.deck.pop
-      @dealer.cards << @game_cards.deck.pop
-      @player.cards << @game_cards.deck.pop
-      @dealer.cards << @game_cards.deck.pop
+      player.cards << game_cards.deck.pop
+      dealer.cards << game_cards.deck.pop
+      player.cards << game_cards.deck.pop
+      dealer.cards << game_cards.deck.pop
 
-      @player.calculate_total
-      @dealer.calculate_total
+      player.calculate_total
+      dealer.calculate_total
 
       #display what cards player and dealer have
       puts "#{@player.name} you have the following cards:#{@player.cards[0][1]} of #{@player.cards[0][0]} and a #{@player.cards[1][1]} of #{@player.cards[1][0]}"
@@ -115,12 +115,12 @@ end
       puts "The Dealer's cards: #{@dealer.cards[0][1]} of #{@dealer.cards[0][0]} and the other card is face down"
   
       #player conditionals
-      if @player.total == 21
+      if player.total == 21
         puts "Yay! #{@player.name}, you hit blackjack"
         #Note: Don't need > 21 scenario, because the max value two cards can have is 21
       end
 
-        while @player.total < 21 
+        while player.total < 21 
         puts "Enter 1 if you want to Hit or Enter 2 if you want to Stay"
         hit_or_stay = gets.chomp
 
@@ -139,29 +139,29 @@ end
       end #end while loop
 
       #dealer_conditionals
-      if @dealer.total == 21
+      if dealer.total == 21
         puts "Dealer hit BlackJack."
       end
 
       #dealer keeps hitting until it gets a value of at least 17
-      while @dealer.total < 17
+      while dealer.total < 17
         hit(@dealer, "The Dealer is choosing to get a new card....", "Dealer")
       end #end while loop
 
 
       #show dealer cards
       puts "Dealer cards: "
-      @dealer.cards.each do |card|
+      dealer.cards.each do |card|
         puts "==> #{card}"
       end
 
       #show player cards
       puts "Your cards: "
-      @player.cards.each do |card|
+      player.cards.each do |card|
         puts "==> #{card}"
       end
 
-      @player <=> @dealer
+      player <=> dealer
       play_again
     end
 
@@ -170,7 +170,7 @@ end
       puts ""
       puts "Would you like to play again? Enter 1 for Yes or Enter 2 for No"
       player_answer = gets.chomp
-      play_again_choices = ['Y', 'N']
+      play_again_choices = ['1', '2']
       if player_answer == "1"
         puts "Starting a new game"
         game = Game.new.run
