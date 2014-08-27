@@ -15,9 +15,7 @@ module Book
   def to_s
     pretty_output
   end
-
 end
-
 
 
 class Library_Book
@@ -108,7 +106,7 @@ class Library
   end
 
   def show_books
-
+    books.sort! {|a,b| a.name.downcase <=> b.name.downcase}
     books.each do |book|
       puts "#{book}"
     end 
