@@ -1,5 +1,9 @@
 
 #Questions. Difference between module and use of subclasses
+#Distinct Method
+#Reject Method
+#Sort by Author
+#Sort by Title
 
 
 
@@ -48,7 +52,7 @@ class Library
     create_library
   end
 
-  def menu
+  def prompt
     begin
       user_input_choices = ['1', '2', '3', '4']
       puts "Enter:
@@ -104,6 +108,7 @@ class Library
   end
 
   def show_books
+
     books.each do |book|
       puts "#{book}"
     end 
@@ -115,4 +120,4 @@ end #end Book class
 
 
 collection = Library.new
-collection.menu
+collection.prompt
