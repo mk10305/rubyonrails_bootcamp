@@ -1,10 +1,4 @@
 
-#Questions. Difference between module and use of subclasses
-#Distinct Method
-#Reject Method
-#Sort by Author
-#Sort by Title
-
 
 
 module Book
@@ -59,27 +53,28 @@ class Library
       3) If you want to search for a book by author
       4) If you want to exit this app"
       user_input = gets.chomp
-      if user_input == "1"
+      case user_input
+      when "1"
         puts "Let's add a book to the library's collection"
         #Creating a Book object will trigger add book dialogue 
         new_book = User_Book.new()
         add_library(new_book)
         prompt
       
-      elsif user_input == "2"
+      when "2"
         puts "Here are all the books in the library...."
         show_books
         prompt
 
-      elsif user_input == "3"
+      when "3"
         puts "You want to search by author..."
         puts "Enter the author's full name to find books by that author"
         author_name = gets.chomp
         search_book(author_name)
         prompt
-      elsif user_input == "4"
+      when "4"
         exit
-      end #end if/else
+      end #case
   end until user_input_choices.include?(user_input) 
 
   end
