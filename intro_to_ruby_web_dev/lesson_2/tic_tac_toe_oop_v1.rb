@@ -79,6 +79,8 @@ def run
       puts "Play again? (y/n)"
       break if gets.chomp.downcase != "y"
     end
+
+    @board = Board.new
   end
 
   puts "Thanks for playing!"
