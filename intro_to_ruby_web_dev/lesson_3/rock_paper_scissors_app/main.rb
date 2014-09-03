@@ -39,7 +39,7 @@ end
 
 
 before do
- 
+ @game_on = true
   
 end
 
@@ -103,6 +103,7 @@ post '/game/player_selection' do
 end
 
 get '/game_over' do
+  @game_on = false
   erb :game_over
 end
 

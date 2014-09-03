@@ -17,10 +17,12 @@
       </div>
     </div>
 
+    <%if @game_on %>
     <ul class="score">
       <li> Player Total: <%= session[:player_total] %>  </li>
       <li> Opponent Total: <%= session[:opponent_total] %> </li>
     </ul>
+    <% end %>
 
   <div class="container">
     <%if @error %>
