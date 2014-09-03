@@ -18,13 +18,14 @@ helpers do
     @play_again = true
     @show_hit_or_stay_buttons = false
     @success = "<strong>#{session[:character_name]} wins! </strong> #{msg}"
-
+    session[:player_total] += 1
   end
 
   def loser!(msg)
     @play_again = true
     @show_hit_or_stay_buttons = false
     @error = "<strong>#{session[:character_name]} loses! </strong> #{msg}"
+    session[:opponent_total] += 1
   end
 
   def tie!(msg)
@@ -38,6 +39,7 @@ end
 
 
 before do
+ 
   
 end
 
@@ -54,12 +56,14 @@ end
 
 
 get '/players' do
+  session[:player_total] = 0
+  session[:opponent_total] = 0
   erb :players
 end
 
 post '/players' do
-  if params[:character_name].empty?
-    @error = "Name is required"
+  if (params[:character_name].nil?) || (params[:opponent_name].nil?)
+    @error = "Please choose a player AND an opponent"
     halt erb(:players)
   end
  session[:character_name] = params[:character_name]
@@ -83,6 +87,7 @@ get '/game_outcome' do
     tie!(" Both #{session[:character_name]} and #{session[:opponent_name]} chose #{session[:player_selection]} ")
   elsif (player_selection == "paper" && opponent_selection == 'rock') || (player_selection == "rock" && opponent_selection == 'scissors') || (player_selection == "scissors" && opponent_selection == 'paper')
     winner!("Congratulations, #{session[:character_name]}! You showed #{session[:character_name]} ") 
+    
   else
     loser!("Come on #{session[:character_name]}! I know you can do better. Show #{session[:opponent_name]} who is boss next time")
   end

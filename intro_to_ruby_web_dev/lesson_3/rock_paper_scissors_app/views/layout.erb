@@ -11,11 +11,16 @@
       <div class="navbar-inner">
         <div class="container">
             <ul class="nav">
-              <li><a href="/players">New Game</a></li>
+              <li><a href="/players">Start Over</a></li>
             </ul>
         </div>
       </div>
     </div>
+
+    <ul class="score">
+      <li> Player Total: <%= session[:player_total] %>  </li>
+      <li> Opponent Total: <%= session[:opponent_total] %> </li>
+    </ul>
 
   <div class="container">
     <%if @error %>
