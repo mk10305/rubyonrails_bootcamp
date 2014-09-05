@@ -34,12 +34,44 @@ helpers do
     @success = "<strong>It is a tie </strong> #{msg}"
   end
 
+  def weapon_image(weapon_value)
+    #to build image URL
+    weapon = case weapon_value
+      when 'paper' then 'paper_large'
+      when 'rock' then 'rock_smiley_large'
+      when 'scissors' then 'scissors_large'
+    end
+
+  "<img src='/images/#{weapon}.png'>"
+  end
+
+  def icon_image(player)
+    #to build image URL
+    icon = case player
+      when 'Bugs Bunny' then 'bugs_bunny'
+      when 'Road Runner' then 'road_runner'
+      when 'Tweety Bird' then 'tweety'
+      when 'Porky Pig' then 'porky_pig'
+      when 'Elmer Fudd' then 'elmer_fudd'
+      when 'Wile E. Coyote' then 'coyote'
+      when 'Sylvester the Cat' then 'sylvester'
+      when 'Daffy Duck' then 'daffy_duck'
+    end
+
+  "<img class='navbar-right navimage' src='/images/icons/#{icon}.jpg'>"
+  end
+
+
+
+
+
+
   
 end
 
 
 before do
- @game_on = true
+
   
 end
 
@@ -75,10 +107,12 @@ end
 
 
 get '/game' do
+  @game_on = true
   erb :game
 end
 
 get '/game_outcome' do
+  @game_on = true
   player_selection = session[:player_selection]
   session[:opponent_selection]= opponent_selects
   opponent_selection = session[:opponent_selection]
@@ -86,7 +120,7 @@ get '/game_outcome' do
   if player_selection == opponent_selection
     tie!(" Both #{session[:character_name]} and #{session[:opponent_name]} chose #{session[:player_selection]} ")
   elsif (player_selection == "paper" && opponent_selection == 'rock') || (player_selection == "rock" && opponent_selection == 'scissors') || (player_selection == "scissors" && opponent_selection == 'paper')
-    winner!("Congratulations, #{session[:character_name]}! You showed #{session[:character_name]} ") 
+    winner!("Congratulations, #{session[:character_name]}! You showed #{session[:opponent_name]} ") 
     
   else
     loser!("Come on #{session[:character_name]}! I know you can do better. Show #{session[:opponent_name]} who is boss next time")

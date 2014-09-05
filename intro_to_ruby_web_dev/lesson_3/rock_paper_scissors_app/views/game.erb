@@ -1,27 +1,49 @@
 
 
-<p> <%= session[:character_name] %> Vs. <%= session[:opponent_name] %></p>
+<p> <%= session[:opponent_name] %> Vs. <%= session[:character_name] %></p>
 
 
-<h3> Select Rock, Paper, or Scissors </h3>
+<div class="container">
+<div class="row">
+<div class="darkbg col-sm-12">
+<div class="row">
+<div class="darkbg col-md-6 col-md-offset-3">
+<h3> Select a Weapon of Choice for <%= session[:character_name] %>  ! </h3>
+<form class="form-inline" role="form" action="/game/player_selection" method="post">
+ <div class="radio">
+  <label>
+    <input type="radio" name="player_selection" value="rock" checked>
+    <img src="/images/rock_smiley.png"/>
+  </label>
+  <span class="help-block">Rock</span>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" name="player_selection" value="paper">
+    <img src="/images/paper.png"/>
+  </label>
+  <span class="help-block">Paper</span>
+</div>
+<div class="radio">
+  <label>
+    <input type="radio" name="player_selection" value="scissors">
+    <img src="/images/scissors.png"/>
+  </label>
+  <span class="help-block">Scissors</span>
+</div>
 
-<form action="/game/player_selection" method="post">
-       <div class="form-inline">
-        <div class="player_choices">
-           <label class="radio">
-               <input value="rock" type="radio" name="player_selection">Rock
-           </label>
-           <label class="radio">
-               <input value="paper" type="radio" name="player_selection">Paper
-           </label>
-           <label class="radio">
-               <input value="scissors" type="radio" name="player_selection">Scissors
-           </label>
-         </div>
-       </div>
-     </br>
-   <input type="submit" class="btn" />
-   </form>
+<div class="clearfix"></div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
 
 
 

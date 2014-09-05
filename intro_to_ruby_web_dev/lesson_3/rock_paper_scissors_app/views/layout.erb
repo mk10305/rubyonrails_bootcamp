@@ -2,36 +2,60 @@
 <html>
   <head>
     <title>My First App</title>
-    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="/application.css">
   </head>
-  <body style="padding-top: 50px;">
+  <body>
+    <header>
 
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-            <ul class="nav">
-              <li><a href="/players">Start Over</a></li>
-            </ul>
-        </div>
-      </div>
+   <nav class="navbar navbar-default navbar-static-top" role="navigation">
+     <div class="container">
+
+
+      <div class="navbar-header">
+            <p class="navbar-brand">Rock-Paper-Scissors</p>
+          </div>
+
+
+
+
+
+       <ul class="nav navbar-nav">
+           <li><a href="/players">Start New Game</a></li>
+      <li><a href="#">Rules</a></li>
+      </ul>
+
+
+       <%if @game_on %>
+       <div class="score">
+      <p class="navbar-text navbar-right"> Score: <%= session[:player_total] %> </p>
+      <%= icon_image(session[:character_name]) %> 
+      <p class="navbar-text navbar-right"> Score: <%= session[:opponent_total] %> </p>
+      <%= icon_image(session[:opponent_name]) %> 
+    
+  
     </div>
+      <% end %>
+      
+    
+     </div>
+   </nav>
+ </header>
 
-    <%if @game_on %>
-    <ul class="score">
-      <li> Player Total: <%= session[:player_total] %>  </li>
-      <li> Opponent Total: <%= session[:opponent_total] %> </li>
-    </ul>
-    <% end %>
+
+
+  
 
   <div class="container">
     <%if @error %>
-      <div class="alert alert-error"><%=@error%></div>
+      <div class="alert alert-danger"><%=@error%></div>
     <% end %>
     <%if @success %>
       <div class="alert alert-success"><%=@success%></div>
     <% end %>
       <%= yield %>
   </div>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </body>
 </html>

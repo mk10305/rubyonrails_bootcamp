@@ -1,6 +1,31 @@
 
 
-<p> You chose <%= session[:player_selection] %>! The opponent chose <%= session[:opponent_selection] %> </p>
+<div class="container">
+<div class="row">
+<div class="col-sm-6 col-md-offset-3">
+<div class="row">
+<div class="col-sm-6">
+<h4> <%= session[:character_name] %>  Chose: <%= session[:player_selection] %>! </h4>
+ <%= weapon_image(session[:player_selection]) %>
+</div>
+
+<div class="col-sm-6">
+<h4> <%= session[:opponent_name] %>  Chose: <%= session[:opponent_selection] %> </h4>
+ <%= weapon_image(session[:opponent_selection]) %>
+</div>
+</div>
+</div>
+</div>
+<br>
+<div class="row">
+<div class="col-sm-6 col-md-offset-3">
+  </div>
+</div>
+</div>
+
+
+
+
 <% if @play_again %>
 <p>
   <strong> Play again? </strong>
