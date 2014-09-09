@@ -20,13 +20,15 @@ helpers do
   end
 
   def player_picks_square(b,position)
-    b[position] = 'X'
+    if b[position] ==' '
+    b[position]= 'X'
+    end
     b
   end
 
   def computer_picks_square(b)
     position = empty_positions(b).sample
-    b[position] = 'O'
+    b[position] = 'O' if position
     b
   end
 
@@ -52,7 +54,7 @@ helpers do
     @game_on = true
     session[:opponent_total] += 1
     @error = "<strong> #{session[:character_name]} loses! </strong> "
-    
+   
   end
 
   def tie!
@@ -91,7 +93,7 @@ get '/'  do
   else
     redirect '/players'
   end
-  
+ 
 end
 
 
@@ -121,16 +123,8 @@ post '/players/:pos' do
 
   winner = check_winner(session[:board])
 
- 
 
- if (empty_positions(session[:board]).empty?)
-   tie!
-   erb :game
- end
-
-  
-
-  if winner
+ if winner
     #puts winner
     if winner == "Player"
       winner!
@@ -139,16 +133,16 @@ post '/players/:pos' do
     end
     erb :game
   else
-    redirect '/game'
-  end
-
+if empty_positions(session[:board]).empty?
+   tie!
+   erb :game
+else
+ redirect '/game'
+ end
 
    
-
-
-
-
-  
+  end
+ 
 end
 
 get '/game' do
@@ -160,22 +154,3 @@ get '/game_over' do
   @game_on = false
   erb :game_over
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
