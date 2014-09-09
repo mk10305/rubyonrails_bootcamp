@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My First App</title>
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/application.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+  </head>
+  <body>
+    <header>
+
+   <nav class="navbar navbar-default navbar-static-top" role="navigation">
+     <div class="container">
+
+
+      <div class="navbar-header">
+            <p class="navbar-brand">Tic-Tac-Toe</p>
+          </div>
+
+
+
+
+
+       <ul class="nav navbar-nav">
+           <li><a href="/players">Start New Game</a></li>
+      <li><a href="#">Rules</a></li>
+      </ul>
+
+         <%if @game_on %>
+         <div class="score">
+        <p class="navbar-text navbar-right"> Score: <%= session[:player_total] %> </p>
+        <%= icon_image(session[:character_name]) %> 
+        <p class="navbar-text navbar-right"> Score: <%= session[:opponent_total] %> </p>
+        <%= icon_image(session[:opponent_name]) %> 
+      
+      
+      </div>
+        <% end %>
+        
+
+
+
+      
+    
+     </div>
+   </nav>
+ </header>
+
+
+
+  
+
+  <div class="container">
+    <%if @error %>
+      <div class="alert alert-danger"><%=@error%></div>
+    <% end %>
+    <%if @success %>
+      <div class="alert alert-success"><%=@success%></div>
+    <% end %>
+      <%= yield %>
+  </div>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

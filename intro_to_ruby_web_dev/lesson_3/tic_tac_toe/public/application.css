@@ -1,0 +1,22 @@
+
+
+#red {
+
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+}
+
+
+
+.navimage {
+margin-top: 10px; 
+margin-bottom: 10px; 
+}
+
+
+.game_piece {
+    margin-left: 35px;
+    margin-top: 8px;
+    width: 100px;
+}
