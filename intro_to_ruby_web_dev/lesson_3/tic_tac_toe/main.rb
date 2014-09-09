@@ -20,7 +20,7 @@ helpers do
   end
 
   def player_picks_square(b,position)
-    if b[position] ==' '
+   unless b[position] == 'X' || b[position] =='O'
     b[position]= 'X'
     end
     b
