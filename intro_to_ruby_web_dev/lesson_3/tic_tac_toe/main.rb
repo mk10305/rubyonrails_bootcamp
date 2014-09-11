@@ -117,9 +117,10 @@ end
 
 post '/players/:pos' do
   pos= params[:pos].to_i
+unless ['X', 'O'].include? session[:board][pos]
   session[:board] = player_picks_square(session[:board], pos)  # saving player's position
   session[:board] = computer_picks_square(session[:board]) # computer play
-
+end
 
   winner = check_winner(session[:board])
 

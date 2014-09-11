@@ -10,3 +10,59 @@ form#stay_form {
 img.card_image {
   margin: 0px 5px 5px 0px;
 }
+
+body {
+/*background-color: green;
+color: white;*/
+background-color: #118200;
+background-image: url("http://www.transparenttextures.com/patterns/felt.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+
+}
+
+
+
+.navbar {
+background-color: #CD5300;
+background-color: black;
+}
+
+
+.cards {
+  margin-top: 20px;
+}
+
+.player_dealer_cards {
+  /*background-color:green; */
+  border: 1px solid white; 
+}
+
+.player_dealer_info {
+
+/*  background-color: green;*/
+}
+
+.alert  {
+  text-align: center;
+}
+
+.play_again {
+  text-align: center;
+}
+
+.intro {
+margin-top: 20px;
+}
+
+.text-warning{
+text-align: center;
+}
+
+
+
+
+
+
+
+
+
