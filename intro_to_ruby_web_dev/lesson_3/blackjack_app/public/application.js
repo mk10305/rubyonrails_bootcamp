@@ -3,22 +3,22 @@ $(document).ready(function() {
   player_hits();
   player_stays();
   dealer_hit();
-  arrow();
+  question();
 
   });
 
 
-function arrow() {
-  $(document).load(function() {
+function question() {
+  $(document).click(function() {
+    alert("test");
 
-  $(".question").animate({left:'250px'});
+  
 
 
   });
 
 
 }
-
 
 
 
