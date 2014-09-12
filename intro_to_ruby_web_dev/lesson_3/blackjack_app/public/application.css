@@ -20,7 +20,9 @@ background-image: url("http://www.transparenttextures.com/patterns/felt.png");
 
 }
 
-
+h2 {
+  color: white;
+}
 
 .navbar {
 background-color: #CD5300;
@@ -33,14 +35,9 @@ background-color: black;
 }
 
 .player_dealer_cards {
-  /*background-color:green; */
   border: 1px solid white; 
 }
 
-.player_dealer_info {
-
-/*  background-color: green;*/
-}
 
 .alert  {
   text-align: center;
@@ -59,9 +56,9 @@ text-align: center;
 }
 
 
-.arrow {
-color: #000000;
-font-size: 1em;
+.question {
+
+
 }
 
 

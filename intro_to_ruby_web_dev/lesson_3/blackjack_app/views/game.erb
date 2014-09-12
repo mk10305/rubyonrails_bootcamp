@@ -36,14 +36,14 @@
 
   <div class="row">
   <div class="col-md-6 player_dealer_cards">
-    <h2> <span class="glyphicon glyphicon-circle-arrow-right arrow"></span> <%= session[:player_name] %>'s cards:</h2>
+    <h2> <%= session[:player_name] %>'s cards:</h2>
       <% session[:player_cards].each do |card| %>
       <%=card_image(card) %>
       <% end %>
   </div>
 
   <div class="col-md-6 player_dealer_cards">
-    <h2> <span class="glyphicon glyphicon-circle-arrow-right arrow"></span> Dealer's cards: </h2>
+    <h2> Dealer's cards: </h2>
       <% session[:dealer_cards].each_with_index do |card, i| %>
       <% if session[:turn] != 'dealer' && i == 0  %>
       <img src="/images/cards/cover.jpg" />
@@ -67,7 +67,7 @@
 
   <h3>  <%= session[:player_name] %> your hand totals to <%= calculate_total(session[:player_cards]) %> </h3>
   <% if @show_hit_or_stay_buttons %>
-  <h4> <%= session[:player_name] %>, do you want to hit or stay? </h4>
+  <h4 class="question"> <%= session[:player_name] %>, do you want to hit or stay? </h4>
 
   <form id="hit_form" action="/game/player/hit" method = "post">
     <input type="submit" class="btn btn-primary" value="Hit" />
