@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 
 function arrow() {
-  $(document).click(function() {
+  $(document).load(function() {
 
   $(".question").animate({left:'250px'});
 
