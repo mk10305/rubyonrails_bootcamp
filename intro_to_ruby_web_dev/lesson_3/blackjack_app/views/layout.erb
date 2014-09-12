@@ -4,7 +4,12 @@
 <head>
 <title> BlackJack </title>
 <link rel="stylesheet" href="/bootstrap.css">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
 <link rel="stylesheet" href="/application.css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script> 
+
+<script src="/application.js"></script>
 
 </head>
 <body>
@@ -15,18 +20,31 @@
         <a class="navbar-brand" href="/new_player">BLACKJACK!</a>
         </ul>
 
-
-        <p class="navbar-text navbar-left">Total: $100 </p>
-        <p class="navbar-text navbar-left">Bet This Round: $50 </p>
-        <p class="navbar-text navbar-right">Dealer's Score </p>
-        <p class="navbar-text navbar-right"><%= session[:player_name] %>'s Score </p>
-       
+        <% if @game_total %>
+        <p class="navbar-text navbar-left">Total: $<%= session[:player_pot] %>  </p>
+          <% end %>
+          <% if @game_bet %>
+        <p class="navbar-text navbar-left">Bet for Round: $<%= session[:player_bet] %> </p>
+       <% end %>
    
   </div>
 </nav>
 </header>
 
+<div class="container">
+<div class="row">
+
+<div class="col-md-8 col-md-offset-2">
+<img class="img-responsive" src="/images/blackjack_font.png" alt="BlackJack">
+</div>
+</div>
+
+
+
 <%= yield %>
+
+
+
 
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

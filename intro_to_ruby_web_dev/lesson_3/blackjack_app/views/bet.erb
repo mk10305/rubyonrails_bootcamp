@@ -1,0 +1,43 @@
+ <div class="container">
+
+<div class="row">
+  <div  class="col-md-8 col-md-offset-2">
+<h2 class="bet"> Place a Bet! </h2>
+<h4 class="text-warning">
+<%= session[:player_name] %>, you currently have $<%= session[:player_pot].to_i %> available, so place your bet accordingly! 
+  
+</h4>
+
+
+</div>
+
+</div>
+
+
+
+<div class="row">
+  <div style="text-align:center" class="col-md-12">
+  
+  <form class="form-inline" role="form" action="/bet" method="post">
+
+    <div class="form-group">
+         <div class="input-group">
+           <div class="input-group-addon">$ Bet</div>
+           <input class="form-control" type="text" name="bet_amount" placeholder="Enter a Bet for the Round">
+        
+         </div>
+       </div>
+
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+ 
+  </div>
+</div>
+</div>
+
+
+
+
+
+

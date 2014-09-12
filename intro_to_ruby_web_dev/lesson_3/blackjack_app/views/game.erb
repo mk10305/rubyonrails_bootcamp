@@ -1,30 +1,30 @@
 
+<div id="game">
 <div class="container">
-<div class="row">
-
-<div class="col-md-8 col-md-offset-2">
-<img class="img-responsive" src="/images/blackjack_font.png" alt="BlackJack">
-</div>
-
-
-<div class="col-md-6 col-md-offset-3">
-    <%if @error %>
-      <div class="alert alert-warning"><%=@error%></div>
-    <% end %>
-    <%if @success %>
-      <div class="alert alert-success"><%=@success%></div>
-    <% end %>
+  <div class="col-md-6 col-md-offset-3">
+      <%if @loser %>
+        <div class="alert alert-warning"><%=@loser%></div>
+      <% end %>
+      <%if @winner%>
+        <div class="alert alert-success"><%=@winner%></div>
+      <% end %>
 
 
-</div>
-
-
+  </div>
 <div class="col-md-6 col-md-offset-3 play_again">
     <% if @play_again %>
-    <p><strong> Play again? </strong></p>
-    <a href="/game" class="btn btn-primary"> Yes </a>
+    <p><strong> Do you want to play another round? </strong></p>
+    <a href="/bet" class="btn btn-primary"> Yes </a>
     <a href="/game_over" class="btn btn-default"> No </a>
   <% end %>
+
+    <% if @zero_balance %>
+    <p><strong> Do you want to start over? </strong></p>
+    <a href="/new_player" class="btn btn-primary"> Yes </a>
+    <a href="/game_over" class="btn btn-default"> No </a>
+  <% end %>
+
+
 </div>
 
 
@@ -34,71 +34,71 @@
 <div class="row cards">
 <div class="col-sm-12">
 
-<div class="row">
-<div class="col-md-6 player_dealer_cards">
-  <h2><%= session[:player_name] %>'s cards:</h2>
-    <% session[:player_cards].each do |card| %>
-    <%=card_image(card) %>
-    <% end %>
-</div>
+  <div class="row">
+  <div class="col-md-6 player_dealer_cards">
+    <h2> <span class="glyphicon glyphicon-circle-arrow-right arrow"></span> <%= session[:player_name] %>'s cards:</h2>
+      <% session[:player_cards].each do |card| %>
+      <%=card_image(card) %>
+      <% end %>
+  </div>
 
-<div class="col-md-6 player_dealer_cards">
-  <h2>Dealer's cards: </h2>
-    <% session[:dealer_cards].each_with_index do |card, i| %>
-    <% if session[:turn] != 'dealer' && i == 0  %>
-    <img src="/images/cards/cover.jpg" />
-    <% else %>
-    <%= card_image(card)%>
-    <% end %>
-    <% end %>
-</div>
+  <div class="col-md-6 player_dealer_cards">
+    <h2> <span class="glyphicon glyphicon-circle-arrow-right arrow"></span> Dealer's cards: </h2>
+      <% session[:dealer_cards].each_with_index do |card, i| %>
+      <% if session[:turn] != 'dealer' && i == 0  %>
+      <img src="/images/cards/cover.jpg" />
+      <% else %>
+      <%= card_image(card)%>
+      <% end %>
+      <% end %>
+  </div>
 
-</div>
-
-
-</div>
-</div>
-
-<div class="row">
-<div class="col-sm-12">
-
-<div class="row">
-<div class="col-md-6 player_dealer_info">
-
-<h3>  <%= session[:player_name] %> your hand totals to <%= calculate_total(session[:player_cards]) %> </h3>
-<% if @show_hit_or_stay_buttons %>
-<h4> <%= session[:player_name] %>, do you want to hit or stay? </h4>
-
-<form id="hit_form" action="/game/player/hit" method = "post">
-  <input type="submit" class="btn btn-primary" value="Hit" />
-</form>
-
-<form id="stay_form" action="/game/player/stay" method = "post">
-  <input type="submit" class="btn btn-default" value="Stay" />
-</form>
+  </div>
 
 
-<% end %>
-</div>
+  </div>
+  </div>
 
+  <div class="row">
+  <div class="col-sm-12">
 
+  <div class="row">
+  <div class="col-md-6 player_dealer_info">
 
-<div class="col-md-6 player_dealer_info">
-  <% if @show_dealer_hit_button %>
-    <h3> Dealer has <%= calculate_total(session[:dealer_cards])%> and will hit.</h3>
+  <h3>  <%= session[:player_name] %> your hand totals to <%= calculate_total(session[:player_cards]) %> </h3>
+  <% if @show_hit_or_stay_buttons %>
+  <h4> <%= session[:player_name] %>, do you want to hit or stay? </h4>
 
-    <form action='/game/dealer/hit' method='post'>
-    <input type='submit' class='btn btn-primary' value="Click to see Dealer's card">
+  <form id="hit_form" action="/game/player/hit" method = "post">
+    <input type="submit" class="btn btn-primary" value="Hit" />
   </form>
+
+  <form id="stay_form" action="/game/player/stay" method = "post">
+    <input type="submit" class="btn btn-default" value="Stay" />
+  </form>
+
+
   <% end %>
-</div>
-</div>
-</div>
-
-</div>
-</div>
+  </div>
 
 
+
+  <div class="col-md-6 player_dealer_info">
+    <% if @show_dealer_hit_button %>
+      <h3> Dealer has <%= calculate_total(session[:dealer_cards])%> and will hit.</h3>
+
+      <form id="dealer_hit" action='/game/dealer/hit' method='post'>
+      <input type='submit' class='btn btn-primary' value="Click to see Dealer's card">
+    </form>
+    <% end %>
+  </div>
+  </div>
+  </div>
+
+  </div>
+  </div>
+
+</div>
 
 
 
