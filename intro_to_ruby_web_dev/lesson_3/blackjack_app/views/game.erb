@@ -36,6 +36,9 @@
 
   <div class="row">
   <div class="col-md-6 player_dealer_cards">
+
+    <div class="card_div">
+
     <h2> <%= session[:player_name] %>'s cards:</h2>
       <% session[:player_cards].each do |card| %>
       <%=card_image(card) %>
@@ -58,9 +61,14 @@
 
       <% end %>
       </div>
+    </div>
   </div>
 
   <div class="col-md-6 player_dealer_cards">
+
+    <div class="card_div">
+
+
     <h2> Dealer's cards: </h2>
       <% session[:dealer_cards].each_with_index do |card, i| %>
       <% if session[:turn] != 'dealer' && i == 0  %>
@@ -79,6 +87,9 @@
         </form>
         <% end %>
       </div>
+
+
+    </div>
 
 
 

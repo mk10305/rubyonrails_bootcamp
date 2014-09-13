@@ -1,25 +1,13 @@
 
 $(document).ready(function() {
+
+  $(".card_div").css("height", $(".player_dealer_cards").height());
+
+
   player_hits();
   player_stays();
   dealer_hit();
-  question();
-
   });
-
-
-function question() {
-  $(document).click(function() {
-    alert("test");
-
-  
-
-
-  });
-
-
-}
-
 
 
 function player_hits() {
@@ -33,9 +21,7 @@ function player_hits() {
 
       return false;
 
-
     });
-
 
 }
 
