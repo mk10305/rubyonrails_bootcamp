@@ -1,13 +1,28 @@
 
 $(document).ready(function() {
 
-  $(".card_div").css("height", $(".player_dealer_cards").height());
 
+      $( ".message2" ).hide();
+  
+
+
+    $( "#bet" ).submit(function( event ) {
+    if (!($.isNumeric( $('#bet_amount').val() ))){
+
+      $( ".message2" ).show();
+    }
+  });
+
+
+  $(".card_div").css("height", $(".player_dealer_cards").height());
 
   player_hits();
   player_stays();
   dealer_hit();
+ 
   });
+
+
 
 
 function player_hits() {

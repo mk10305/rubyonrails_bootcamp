@@ -24,8 +24,10 @@
   <form class="form-inline" role="form" action="/new_player" method="post">
   <div class="form-group">
       <div class="input-group">
-        <div class="input-group-addon">Name:</div>
-        <input class="form-control" type="text" name="player_name" placeholder="Enter your Name">
+        <label class="sr-only" for="player_name"> Name </label>
+        <div class="input-group-addon">Name:</div> 
+        <input class="form-control" type="text" name="player_name" placeholder="Enter your Name" required>
+
      
       </div>
     </div>

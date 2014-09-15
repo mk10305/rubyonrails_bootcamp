@@ -16,7 +16,7 @@ body {
 color: white;
 background-color: #118200;
 background-image: url("http://www.transparenttextures.com/patterns/felt.png");
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+
 
 }
 
@@ -57,11 +57,9 @@ text-align: center;
 }
 
 
-.question {
-
-
+.message {
+  text-align:center;
 }
-
 
 
 
